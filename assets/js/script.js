@@ -27,7 +27,7 @@ function getParameters(length, lower, upper, numbers, symbols) {
     if (pwParameters.symbols = confirm('Would you like to include symbols in your password?\nClick OK for Yes or Cancel for No.')) {
       minCharTypes++;
     }
-    if (minCharTypes==0) {
+    if (minCharTypes == 0) {
       alert('You must select at least one character type for your password.');
     }
   }
@@ -37,17 +37,32 @@ function getParameters(length, lower, upper, numbers, symbols) {
 
 //calls getParameters function and uses inputs to generate random password according to chosen parameters
 function generatePassword() {
-  //Declare all characters
-  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@#$%^&*()-_=+`[{]};:<>?/.,'
-
   var parameters = getParameters(); //calls function getting user selected password parameters storing them in object "parameters"
+  var lowerChars = 'abcdefghijklmnopqrstuvwxyz';
+  var upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var numChars = '013456789';
+  var symbChars = '~!@#$%^&*()-_=+`[{]};:<>?/.,';
+  var chars = '';
+  if (parameters.lower) {
+    chars += lowerChars;
+  }
+  if (parameters.upper) {
+    chars += upperChars;
+  }
+  if (parameters.numbers) {
+    chars += numChars;
+  }
+  if (parameters.symbols) {
+    chars += symbChars;
+  }
+
+console.log(chars);
 
   //random string generator - code from https://attacomsian.com/blog/javascript-generate-random-string
   var password = '';
   for (let i = 0; i < parameters.length; i++) {
     password += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-
   return password;
 }
 
