@@ -4,15 +4,15 @@ function getParameters(length, lower, upper, numbers, symbols) {
   var pwParameters = { length, lower, upper, numbers, symbols }
   //force user to set password length between 8-128 characters
   pwParameters.length = prompt('Choose a password length from 8 to 128 characters:');
-  if (pwParameters.length === null)
-    return;
+  if (pwParameters.length === null) {
+    return;}
   var isLongEnough = false;
   while (isLongEnough == false) {
     if (pwParameters.length < 8 || pwParameters.length > 128) {
       pwParameters.length = prompt('Your password length must be between 8 to 128 characters.\nPlease select password length (8-128):');
       if (pwParameters.length == null) {
-      isLongEnough = true;
-      return;
+        isLongEnough = true;
+        return;
       }
     } else {
       isLongEnough = true;
@@ -43,7 +43,8 @@ function getParameters(length, lower, upper, numbers, symbols) {
 
 //calls getParameters function and uses inputs to generate random password according to chosen parameters
 function generatePassword() {
-  var parameters = getParameters(); //calls function getting user selected password parameters storing them in object "parameters"
+   //calls function getting user selected password parameters storing them in object "parameters"
+  var parameters = getParameters();
   var lowerChars = 'abcdefghijklmnopqrstuvwxyz';
   var upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var numChars = '013456789';
@@ -76,7 +77,6 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 }
 
