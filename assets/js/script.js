@@ -48,7 +48,7 @@ function generatePassword() {
   var lowerChars = 'abcdefghijklmnopqrstuvwxyz';
   var upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var numChars = '013456789';
-  var symbChars = '~!@#$%^&*()-_=+`[{]};:<>?/.,';
+  var symbChars = '~!@#$%^&*()-_=+[{]};:<>?/';
   var chars = '';
   if (parameters.lower) {
     chars += lowerChars;
@@ -75,8 +75,8 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  var password = generatePassword();
   passwordText.value = password;
 }
 
