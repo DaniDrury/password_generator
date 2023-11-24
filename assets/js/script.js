@@ -18,6 +18,7 @@ function getParameters(length, lower, upper, numbers, symbols) {
       isLongEnough = true;
     }
   }
+  
   //user picks what character types to use in password - force user to select at least one character type
   var minCharTypes = 0;
   while (minCharTypes == 0) {
@@ -62,10 +63,10 @@ function generatePassword() {
   if (parameters.symbols) {
     chars += symbChars;
   }
-  //random string generator - code from https://attacomsian.com/blog/javascript-generate-random-string
+
   var password = '';
   for (let i = 0; i < parameters.length; i++) {
-    password += chars.charAt(Math.floor(Math.random() * chars.length));
+    password += chars[(Math.floor(Math.random() * chars.length))];
   }
   return password;
 }
